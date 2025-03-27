@@ -1,6 +1,6 @@
 import db from '../config/database.js';
 
-db,run(`
+db.run(`
     CREATE TABLE IF NOT EXISTS users (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     username TEXT UNIQUE NOT NULL,
@@ -8,7 +8,7 @@ db,run(`
     password TEXT NOT NULL,
     avatar TEXT
     )
- `)
+ `);
 
  function createUserRepository(newUser) {
     return new Promise((res, rej) => {
@@ -23,10 +23,10 @@ db,run(`
                 if(err) {
                     rej(err)
                  } else{
-                    res({message: 'User created'})
+                    res({id: this.lastID, ...newUser})
                 }
             }
-            );
+        );
     });
  }
 
