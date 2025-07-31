@@ -19,10 +19,10 @@ db.run(`
             VALUES (?, ?, ?, ?)
             `,
             [username, email, password, avatar],
-            (err) => {
+            function (err) {
                 if(err) {
-                    reject(err)
-                 } else{
+                    reject(err);
+                 } else {
                     resolve({id: this.lastID, ...newUser});
                 }
             }
